@@ -1,29 +1,37 @@
+import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import animation
-import numpy as np
-
+ 
 # First set up the figure, the axis, and the plot element we want to animate
 fig = plt.figure()
-ax = fig.add_subplot(111)
+ax = plt.axes(xlim=(0, 100), ylim=(0, 100))
 line, = ax.plot([], [], lw=2)
+ 
+# initialization function: plot the background of each frame
+def init():
+    line.set_data([], [])
+    return line,
+ 
+# animation function.  This is called sequentially
+def animate(i):
 
-x = np.linspace(0, 10, 11)
-y = []
-g = 9.8
+	x = np.linspace(0, 100, 101)
+	y = np.linspace(0, 100, 101)
 
-for i in np.linspace(0, 10, 11):
-    r = int(i)
-    s = int(r + 1)
-    t = int(r + 2)
-    y[r] = r
-    print "\n", y[r]
-    y[s] = s
+	g = 9.8
 
-    y[t] = int(2 * y[s] - y[r] - g * ((0.1) ** 2))
-    return y[t]
+    	for i in np.linspace(0, 98, 99):
+	    r = int(i)			# n
+	    s = int(r + 1)		# n + 1
+	    t = int(r + 2)		# n + 2
 
-line.set_data(x, y[t])
+	    y[t] = (2 * y[s] - y[r] - g * ((0.1) ** 2))
+    	line.set_data(x, y[t])
 
-# Showing the figure and window
-ax.plot(line)
+    	return line,
+ 
+# call the animator.  blit=True means only re-draw the parts that have changed.
+anim = animation.FuncAnimation(fig, animate, init_func=init,
+                               frames=200, interval=20, blit=True)
+ 
 plt.show()
