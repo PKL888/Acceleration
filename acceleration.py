@@ -28,7 +28,11 @@ def animate(i):
         t = int(r + 2)		# n + 2
 
         y[t] = (2 * y[s] - y[r] - g * ((0.1) ** 2))
-        line.set_data(x, y[t])
+
+        line.set_data(x[i], y[t])
+        print x[i]
+        print y[t]
+        print "\n"
 
         return line,
 
