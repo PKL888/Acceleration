@@ -40,9 +40,6 @@ plt.show()
 #            ==> mg = ma
 #                ==> a = g = 9.81 (m / s ** 2)
 
-# a = ((y(n+2) - y(n+1)) / delta of 't' - (y(n+1) - y(n)) /,
-# delta of 't') / delta of 't' ** 2 = g
-
 # a =   y(n+2) - y(n+1)   y(n+1) - y(n)     = g
 #       --------------- - -------------
 #              t                t
