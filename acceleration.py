@@ -24,7 +24,7 @@ for i in np.linspace(0, 98, 99):
     print "t:", t
 
     print "y[t]:", y[t]
-    print "x[r]:", x[r]
+    print "x[t]:", x[t]
 
     ax.scatter(x[r], y[t])
 
