@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-fig = plt.figure()
+fig = plt.figure("Acceleration")
 ax = fig.add_subplot(111)
 
 g = 9.8
