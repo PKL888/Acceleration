@@ -4,10 +4,28 @@ import numpy as np
 fig = plt.figure("Acceleration")
 ax = fig.add_subplot(111)
 
-g = 9.8
+g = 9.81    # Force of gravity
+dt = 0.1    # Delta of time
 
-x = np.linspace(0, 100, 101)
-y = np.linspace(0, 100, 101)
+x = np.linspace(0, 100, 101)    # X range
+y = np.linspace(0, 100, 101)    # Y range
+
+"""
+a = np.linspace(1, 101, 102)    # X range
+b = np.linspace(3, 103, 104)    # Y range
+
+vx = np.linspace(2, 102, 103)   # Velocity X range
+vy = np.linspace(5, 105, 106)   # Velocity Y range
+
+
+# The new part regarding the velocity...
+
+a[0] = 1    # Initial quantities
+b[0] = 3    # Initial quantities
+
+vx[0] = 2   # V = m / s
+vy[0] = 5   # V = m / s
+"""
 
 for i in np.linspace(0, 98, 99):
 
@@ -15,8 +33,18 @@ for i in np.linspace(0, 98, 99):
     s = int(i + 1)
     t = int(i + 2)
 
+    """ My new attempts -->
+
+    a[s] = (a[r] + vx[r] * dt)
+    b[s] = (b[r] + vy[r] * dt)
+
+    # Debugging
+    print "a[s]:", a[s]
+    print "b[s]:", b[s]
+    """
+
     x[t] = (2 * x[s] - x[r] + 0)
-    y[t] = (2 * y[s] - y[r] - g * ((0.1) ** 2))
+    y[t] = (2 * y[s] - y[r] - g * ((dt) ** 2))
 
     if y[t] < 0:
         break
@@ -27,7 +55,7 @@ for i in np.linspace(0, 98, 99):
     print "y[t]:", y[t]
     print "x[t]:", x[t]
 
-    ax.scatter(x[r], y[t])
+    ax.scatter(x[t], y[t])
 
 plt.show()
 
