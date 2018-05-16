@@ -1,12 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 fig = plt.figure("Acceleration New")
 ax = fig.add_subplot(111)
 
-g = 9.81    # Force of gravity
-dt = 0.1    # Delta of time
-rE = ---    # Radius of Earth
+g = 9.81            # Force of gravity
+dt = 0.1            # Delta of time
+rE = 6371           # Radius of Earth
+G = 6.674           # Gravitational constant
+M = 5.972 ** 24     # Mass of Earth
 
 x = np.linspace(0, 100, 101)    # X range
 y = np.linspace(0, 100, 101)    # Y range
@@ -33,6 +36,18 @@ for i in np.linspace(0, 98, 99):
     r = int(i)
     s = int(i + 1)
     t = int(i + 2)
+
+    # Radius squared
+    rSq = x[s] ** 2 + y[s] ** 2
+
+    # The new calculation of 'g'
+    g = G * M / rSq
+
+    # Debugging --> Note: when the new g is used,
+    # the program terminates after printing out
+    # the 'rSq' and 'g' ...
+    print "rSq:", math.sqrt(rSq)
+    print "g:", g
 
     # Old program
     x[t] = (2 * x[s] - x[r] + 0)
