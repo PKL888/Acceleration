@@ -2,14 +2,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-fig = plt.figure("Acceleration New")
+fig = plt.figure("From Earth and Beyond!")
 ax = fig.add_subplot(111)
 
-g = 9.81            # Force of gravity
-dt = 0.1            # Delta of time
-rE = 6371           # Radius of Earth
-G = 6.674           # Gravitational constant
-M = 5.972 ** 24     # Mass of Earth
+g = 9.81                    # Force of gravity
+dt = 0.1                    # Delta of time
+rE = 6371                   # Radius of Earth
+G = 6.674 * (10 ** -11)     # Gravitational constant
+M = 5.972 ** 24             # Mass of Earth
 
 x = np.linspace(0, 100, 101)    # X range
 y = np.linspace(0, 100, 101)    # Y range
