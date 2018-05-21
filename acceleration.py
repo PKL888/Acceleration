@@ -9,7 +9,7 @@ ax = fig.add_subplot(111)
 
 g = 9.81                    # Force of gravity
 dt = 0.1                    # Delta of time
-rE = 6371                   # Radius of Earth
+rE = 6371000                # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
 M = 5.972 ** 24             # Mass of Earth
 
@@ -52,13 +52,13 @@ for i in np.linspace(0, 98, 99):
     print "g:", g
 
     # Old program
-    x[t] = (2 * x[s] - x[r] + 0)
-    y[t] = (2 * y[s] - y[r] - g * ((dt) ** 2))
+    x[t] = (2 * x[s] - x[r] - g * cos(a) * ((dt) ** 2))   # Fx = F * cos(a) --> x / r
+    y[t] = (2 * y[s] - y[r] - g * sin(a) * ((dt) ** 2))   # Fy = F * sin(a) --> y / r
 
     # Stops program when reaches 0 because the Earth is solid,
     # eliminate for gas planets...
-    if y[t] < 0:
-        break
+    # if y[t] < 0:
+    #     break
 
     # Debugging
     print "\ni:", int(i)
