@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
+# Creating the figure
+
 fig = plt.figure("From Earth and Beyond!")
 ax = fig.add_subplot(111)
 
@@ -22,8 +24,8 @@ vy = np.linspace(5, 105, 106)   # Velocity Y range
 
 # The new part regarding the velocity...
 
-x[0] = 1    # Initial quantities
-y[0] = 3 + rE    # Initial quantities
+x[0] = 1        # Initial quantities
+y[0] = 3 + rE   # Initial quantities
 
 vx[0] = 2   # V = m / s
 vy[0] = 5   # V = m / s
