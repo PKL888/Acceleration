@@ -1,10 +1,15 @@
+# This program is an ongoing creation attempting
+# to represent the position, accelleration and other
+# objectives of objects in space and otherwhere...
+
+# By Peleg Kark-Levin
+
 import matplotlib.pyplot as plt
 import numpy as np
 import math
 
 # Creating the figure
-
-fig = plt.figure("From Earth and Beyond!")
+fig = plt.figure("Intergalactic adventure!")
 ax = fig.add_subplot(111)
 
 g = 9.81                    # Force of gravity
@@ -43,6 +48,7 @@ for i in np.linspace(0, 98, 99):
     rSq = x[s] ** 2 + y[s] ** 2
 
     # The new calculation of 'g'
+    # g is another name for the 'F' - Force
     g = G * M / rSq
 
     # Debugging --> Note: when the new g is used,
@@ -51,9 +57,34 @@ for i in np.linspace(0, 98, 99):
     print "rSq:", math.sqrt(rSq)
     print "g:", g
 
+    # Distance undertaken by the object
+    xTravel = x[t]
+    yTravel = y[t]
+
+    # Pythagoras calculation to figure out the distance
+    # between the objectives
+    theDistance = math.sqrt((x[t] ** 2) + (y[t]) ** 2)
+
+    # Debugging the new additions
+    print "\nthe Distance:", theDistance
+    print "xTravel:", xTravel
+    print "yTravel:", yTravel
+
+    # Variables to come ... the new addition
+    my_cos = xTravel / theDistance
+    my_sin = yTravel / theDistance
+
+    # More debugging...
+    print "my_cos:", my_cos
+    print "my_sin:", my_sin
+    print my_cos - my_sin
+
     # Old program
-    x[t] = (2 * x[s] - x[r] - g * cos(a) * ((dt) ** 2))   # Fx = F * cos(a) --> x / r
-    y[t] = (2 * y[s] - y[r] - g * sin(a) * ((dt) ** 2))   # Fy = F * sin(a) --> y / r
+    x[t] = (2 * x[s] - x[r] - g * my_cos * ((dt) ** 2))  # Fx
+    y[t] = (2 * y[s] - y[r] - g * my_sin * ((dt) ** 2))  # Fy
+
+    # Fx = F * cos(a) --> x / r
+    # Fy = F * sin(a) --> y / r
 
     # Stops program when reaches 0 because the Earth is solid,
     # eliminate for gas planets...
