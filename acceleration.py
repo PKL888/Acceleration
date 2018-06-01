@@ -9,7 +9,7 @@ import numpy as np
 import math
 
 # Creating the figure
-fig = plt.figure("Intergalactic adventure!")
+fig = plt.figure("Space_Pilot!")
 ax = fig.add_subplot(111)
 
 g = 9.81                    # Force of gravity
@@ -18,27 +18,35 @@ rE = 6371000                # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
 M = 5.972 ** 24             # Mass of Earth
 
-x = np.linspace(0, 100, 101)    # X range
-y = np.linspace(0, 100, 101)    # Y range
+"""
+x = np.linspace(0, 7, 8)    # X range
+y = np.linspace(0, 7, 8)    # Y range
 
 a = np.linspace(1, 101, 102)    # X range
 b = np.linspace(3, 103, 104)    # Y range
 
-vx = np.linspace(2, 102, 103)   # Velocity X range
-vy = np.linspace(5, 105, 106)   # Velocity Y range
+vx = np.linspace(2, 9, 10)   # Velocity X range
+vy = np.linspace(5, 11, 12)   # Velocity Y range
+"""
 
 # The new part regarding the velocity...
+
+x = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+y = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 x[0] = 1        # Initial quantities
 y[0] = 3 + rE   # Initial quantities
 
-vx[0] = 2   # V = m / s
-vy[0] = 5   # V = m / s
+vx = 2   # V = m / s
+vy = 5   # V = m / s
 
-x[1] = (x[0] + vx[0] * dt)
-y[1] = (y[0] + vy[0] * dt)
+x[1] = (x[0] + vx * dt)
+y[1] = (y[0] + vy * dt)
 
-for i in np.linspace(0, 98, 99):
+for i in np.linspace(0, 5, 6):
+
+    # Printing out the run number
+    print "run", i
 
     r = int(i)
     s = int(i + 1)
@@ -50,6 +58,10 @@ for i in np.linspace(0, 98, 99):
     # The new calculation of 'g'
     # g is another name for the 'F' - Force
     g = G * M / rSq
+    # if r == 0:
+    #     g = 9.8
+    # else:
+    #     g = G * M / rSq
 
     # Debugging --> Note: when the new g is used,
     # the program terminates after printing out
@@ -58,12 +70,12 @@ for i in np.linspace(0, 98, 99):
     print "g:", g
 
     # Distance undertaken by the object
-    xTravel = x[t]
-    yTravel = y[t]
+    xTravel = x[s]
+    yTravel = y[s]
 
     # Pythagoras calculation to figure out the distance
     # between the objectives
-    theDistance = math.sqrt((x[t] ** 2) + (y[t]) ** 2)
+    theDistance = math.sqrt((x[s] ** 2) + (y[s]) ** 2)
 
     # Debugging the new additions
     print "\nthe Distance:", theDistance
@@ -137,3 +149,14 @@ plt.show()
         |x(0) x(1)
 
 """
+
+"""
+
+
+
+
+
+"""
+
+
+
