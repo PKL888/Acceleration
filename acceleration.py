@@ -31,8 +31,8 @@ vy = np.linspace(5, 11, 12)   # Velocity Y range
 
 # The new part regarding the velocity...
 
-x = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-y = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+x = np.zeros(104)
+y = np.zeros(104)
 
 x[0] = 1        # Initial quantities
 y[0] = 3 + rE   # Initial quantities
@@ -43,7 +43,7 @@ vy = 5   # V = m / s
 x[1] = (x[0] + vx * dt)
 y[1] = (y[0] + vy * dt)
 
-for i in np.linspace(0, 5, 6):
+for i in np.linspace(0, 100, 101):
 
     # Printing out the run number
     print "run", i
