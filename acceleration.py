@@ -9,14 +9,16 @@ import numpy as np
 import math
 
 # Creating the figure
-fig = plt.figure("Space_Pilot!")
+fig = plt.figure("Joey!")
 ax = fig.add_subplot(111)
 
+steps = 300                 # Number of steps per run
+
 g = 9.81                    # Force of gravity
-dt = 0.1                    # Delta of time
+dt = 1                      # Delta of time
 rE = 6371000                # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
-M = 5.972 ** 24             # Mass of Earth
+M = (5.972 * 10 ** 24) * 20   # Mass of Earth
 
 """
 x = np.linspace(0, 7, 8)    # X range
@@ -31,8 +33,8 @@ vy = np.linspace(5, 11, 12)   # Velocity Y range
 
 # The new part regarding the velocity...
 
-x = np.zeros(104)
-y = np.zeros(104)
+x = np.zeros(steps + 4)
+y = np.zeros(steps + 4)
 
 x[0] = 1        # Initial quantities
 y[0] = 3 + rE   # Initial quantities
@@ -43,7 +45,7 @@ vy = 5   # V = m / s
 x[1] = (x[0] + vx * dt)
 y[1] = (y[0] + vy * dt)
 
-for i in np.linspace(0, 100, 101):
+for i in np.linspace(0, steps, (steps + 1)):
 
     # Printing out the run number
     print "run", i
@@ -56,8 +58,9 @@ for i in np.linspace(0, 100, 101):
     rSq = x[s] ** 2 + y[s] ** 2
 
     # The new calculation of 'g'
-    # g is another name for the 'F' - Force
+    # g is another name for 'a' and the 'F' - Force
     g = G * M / rSq
+    # g = k * M / R
     # if r == 0:
     #     g = 9.8
     # else:
@@ -152,11 +155,9 @@ plt.show()
 
 """
 
+Hooke's Law of 
 
 
 
 
 """
-
-
-
