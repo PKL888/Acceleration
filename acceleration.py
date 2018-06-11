@@ -9,16 +9,16 @@ import numpy as np
 import math
 
 # Creating the figure
-fig = plt.figure("Joey!")
+fig = plt.figure("Kangaroo!")
 ax = fig.add_subplot(111)
 
-steps = 300                 # Number of steps per run
+steps = 2000                # Number of steps per run
 
 g = 9.81                    # Force of gravity
-dt = 1                      # Delta of time
+dt = 0.1                    # Delta of time
 rE = 6371000                # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
-M = (5.972 * 10 ** 24) * 20   # Mass of Earth
+M = (5.972 * 10 ** 24) * 5  # Mass of Earth
 
 """
 x = np.linspace(0, 7, 8)    # X range
@@ -53,6 +53,24 @@ for i in np.linspace(0, steps, (steps + 1)):
     r = int(i)
     s = int(i + 1)
     t = int(i + 2)
+
+    # Adjusting the dt based on the distance (t)
+    if t < 200:
+        dt = 1
+    elif t > 200:
+        for
+
+    # Deberes
+    # For every say 100 t,
+    # dt decreases by say /10 or /2 -->
+    # I need to decide by how much
+    # my goal is to create an ellipse around the Earth and back
+    # proportionally related
+    # create a summary
+    # cheack what happens if say g = blaga blaga / r___
+    # not rSq
+    # what would happen then?
+    # try this out
 
     # Radius squared
     rSq = x[s] ** 2 + y[s] ** 2
@@ -157,6 +175,8 @@ plt.show()
 
 Hooke's Law of 
 
+
+What's happening is that the gravitational force of the Earth diminishes at a certain point and then the object can fly freely into space without interrumptions
 
 
 
