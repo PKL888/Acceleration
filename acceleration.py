@@ -12,10 +12,10 @@ import math
 fig = plt.figure("Kangaroo!")
 ax = fig.add_subplot(111)
 
-steps = 2000                # Number of steps per run
+steps = 200                 # Number of steps per run
 
 g = 9.81                    # Force of gravity
-dt = 0.1                    # Delta of time
+dt = 10                     # Delta of time
 rE = 6371000                # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
 M = (5.972 * 10 ** 24) * 5  # Mass of Earth
@@ -42,6 +42,10 @@ y[0] = 3 + rE   # Initial quantities
 vx = 2   # V = m / s
 vy = 5   # V = m / s
 
+# New stuff --> increasing initial velocity
+# vx *= 100
+# vy *= 100
+
 x[1] = (x[0] + vx * dt)
 y[1] = (y[0] + vy * dt)
 
@@ -55,10 +59,11 @@ for i in np.linspace(0, steps, (steps + 1)):
     t = int(i + 2)
 
     # Adjusting the dt based on the distance (t)
-    if t < 200:
-        dt = 1
-    elif t > 200:
-        for
+    if t > 200 & r % 100 == 0:
+        print "Yay!"
+        dt /= 10
+
+    print "dt:", dt
 
     # Deberes
     # For every say 100 t,
