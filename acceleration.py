@@ -9,16 +9,20 @@ import numpy as np
 import math
 
 # Creating the figure
-fig = plt.figure("Kangaroo!")
+fig = plt.figure("Koala!")
 ax = fig.add_subplot(111)
 
-steps = 200                 # Number of steps per run
+steps = 1100                # Number of steps per run
 
 g = 9.81                    # Force of gravity
-dt = 10                     # Delta of time
-rE = 6371000                # Radius of Earth in metres
+dt = 1                      # Delta of time
+rEarth = 6371000            # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
 M = (5.972 * 10 ** 24) * 5  # Mass of Earth
+
+# Moon statistics
+vMoon = 1022 * 1000			# Average orbital speed m/s
+rMoon = 384402 * 1000		# Average orbital distance in meters
 
 """
 x = np.linspace(0, 7, 8)    # X range
@@ -36,11 +40,11 @@ vy = np.linspace(5, 11, 12)   # Velocity Y range
 x = np.zeros(steps + 4)
 y = np.zeros(steps + 4)
 
-x[0] = 1        # Initial quantities
-y[0] = 3 + rE   # Initial quantities
+x[0] = 1        	# Initial quantities
+y[0] = 3 + rEarth   # Initial quantities
 
-vx = 2   # V = m / s
-vy = 5   # V = m / s
+vx = 10000	  # V = m / s
+vy = 0  	  # V = m / s
 
 # New stuff --> increasing initial velocity
 # vx *= 100
@@ -59,9 +63,9 @@ for i in np.linspace(0, steps, (steps + 1)):
     t = int(i + 2)
 
     # Adjusting the dt based on the distance (t)
-    if t > 200 & r % 100 == 0:
-        print "Yay!"
-        dt /= 10
+    # if t > 200 & r % 100 == 0:
+    #     print "Yay!"
+    #     dt /= 10
 
     print "dt:", dt
 
@@ -76,6 +80,12 @@ for i in np.linspace(0, steps, (steps + 1)):
     # not rSq
     # what would happen then?
     # try this out
+
+    # Deberes 18 June
+    # Check program with moon height (as in distance from Earth),
+    # Moon speed, and moon time (as in 30 days to lap the Earth),
+    # See if it actually is... 30 days
+    # Check if I can instantiate the graph's x and y so that they are equal
 
     # Radius squared
     rSq = x[s] ** 2 + y[s] ** 2
@@ -177,12 +187,6 @@ plt.show()
 """
 
 """
-
-Hooke's Law of 
-
-
-What's happening is that the gravitational force of the Earth diminishes at a certain point and then the object can fly freely into space without interrumptions
-
 
 
 """
