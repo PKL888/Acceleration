@@ -9,20 +9,21 @@ import numpy as np
 import math
 
 # Creating the figure
-fig = plt.figure("Koala!")
+fig = plt.figure("Youston!")
 ax = fig.add_subplot(111)
 
-steps = 1100                # Number of steps per run
+steps = 60		            # Number of steps per run
 
 g = 9.81                    # Force of gravity
-dt = 1                      # Delta of time
+dt = 86400	                # Delta of time
 rEarth = 6371000            # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
-M = (5.972 * 10 ** 24) * 5  # Mass of Earth
+M = (5.972 * 10 ** 24) 		# Mass of Earth
 
 # Moon statistics
-vMoon = 1022 * 1000			# Average orbital speed m/s
+vMoon = 1022 				# Average orbital speed in m/s
 rMoon = 384402 * 1000		# Average orbital distance in meters
+tMoon = 27					# Average orbital journey in days
 
 """
 x = np.linspace(0, 7, 8)    # X range
@@ -40,11 +41,11 @@ vy = np.linspace(5, 11, 12)   # Velocity Y range
 x = np.zeros(steps + 4)
 y = np.zeros(steps + 4)
 
-x[0] = 1        	# Initial quantities
-y[0] = 3 + rEarth   # Initial quantities
+x[0] = 1        	  	# Initial quantities
+y[0] = 3 + rMoon	    # Initial quantities
 
-vx = 10000	  # V = m / s
-vy = 0  	  # V = m / s
+vx = vMoon	  			# V = m / s
+vy = 0  	  			# V = m / s
 
 # New stuff --> increasing initial velocity
 # vx *= 100
@@ -76,7 +77,7 @@ for i in np.linspace(0, steps, (steps + 1)):
     # my goal is to create an ellipse around the Earth and back
     # proportionally related
     # create a summary
-    # cheack what happens if say g = blaga blaga / r___
+    # cheack what happens if say g = blaga blaga / r
     # not rSq
     # what would happen then?
     # try this out
@@ -187,6 +188,64 @@ plt.show()
 """
 
 """
+v(t) = x(t + dt) - x(t)
+     --------------------
+			 dt
 
+x(t) --> location of x in time t
+x(t + dt) --> location at the next point in time
+
+velocity --> how quickly one changes position
+accelleration --> how quickly one changes velocity
+
+a(t) = v(t + dt) - v(t)
+      -------------------
+             dt
+
+a(t) --> accelleration at time t
+
+a(t) = | x(t + dt * 2) - x(t + dt) |         |   x(t + dt) - x(t) |
+       |---------------------------|    -    | -------------------|
+       |           dt              |         |         dt         |
+    ------------------------------------------------------------------
+                                        dt
+
+a(t) = x(t + dt * 2) - 2 * x(t + dt) + x(t)
+      --------------------------------------
+                    dt ** 2
+
+f = m * a
+
+m --> the mass of the object moving
+
+a = f / m
+
+f / m =  x(t + dt * 2) - 2 * x(t + dt) + x(t)
+        --------------------------------------
+                      dt ** 2
+
+f / m * (dt ** 2) = x(t + dt * 2) - 2 * x(t + dt) + x(t)
+
+f / m * (dt ** 2) + 2 * x(t + dt) - x(t) = x(t + dt * 2)
+                           [s]      [r]         [t]
+
+* Why did we move these two? 
+    A. Because we want to know the position of THE NEXT POSITION
+
+y[t] = (2 * y[s] - y[r] - g * my_sin * ((dt) ** 2))  # Fy
+
+* Why is there a negative?
+    A. Depending on the direction of movement and the forces involved
+       --> On normal Earth we only have f = m * a
+       --> But in this formula we have y going AWAY FROM EARTH,
+           NOT TOWARDS IT, and that's why the f is a negative
+
+* Why is this all useful?
+    A. Because from our home Earth, when we see a spacial object in the sky,
+       we can know its orbit distance, velocity, and time
+       --> Then we can understand its orbit
+       --> But there are also other physical formulas to understand more things
+
+This was all the summary from the 21 of June 2018
 
 """
