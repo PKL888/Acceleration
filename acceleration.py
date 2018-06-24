@@ -12,13 +12,16 @@ import math
 fig = plt.figure("Youston!")
 ax = fig.add_subplot(111)
 
-steps = 60		            # Number of steps per run
+fig2 = plt.figure("Distance")
+ax2 = fig2.add_subplot(111)
+
+steps = 60                  # Number of steps per run
 
 g = 9.81                    # Force of gravity
-dt = 86400	                # Delta of time
+dt = 86400	                # Delta of time in seconds
 rEarth = 6371000            # Radius of Earth in metres
 G = 6.674 * (10 ** -11)     # Gravitational constant
-M = (5.972 * 10 ** 24) 		# Mass of Earth
+M = 5.972 * (10 ** 24) 		# Mass of Earth
 
 # Moon statistics
 vMoon = 1022 				# Average orbital speed in m/s
@@ -149,6 +152,8 @@ for i in np.linspace(0, steps, (steps + 1)):
 
     # Plotting the result
     ax.scatter(x[t], y[t])
+
+    ax2.bar(i, rSq)
 
 # Showing the diagram
 plt.show()
