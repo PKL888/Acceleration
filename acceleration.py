@@ -15,18 +15,27 @@ ax = fig.add_subplot(111)
 fig2 = plt.figure("Distance")
 ax2 = fig2.add_subplot(111)
 
-steps = 60                  # Number of steps per run
+steps = 365                      # Number of steps per run
 
-g = 9.81                    # Force of gravity
-dt = 86400	                # Delta of time in seconds
-rEarth = 6371000            # Radius of Earth in metres
-G = 6.674 * (10 ** -11)     # Gravitational constant
-M = 5.972 * (10 ** 24) 		# Mass of Earth
+dt = 86400                       # Delta of time in seconds
+G = 6.674 * (10 ** -11)          # Gravitational constant
+
+gEarth = 9.81                    # Force of gravity
+rEarth = 6371000                 # Radius of Earth in metres
+MEarth = 5.972 * (10 ** 24)      # Mass of the Earth
+
+gSun = 28 * gEarth               # Force of gravity
+MSun = 333000 * MEarth           # Mass of the Sun
 
 # Moon statistics
-vMoon = 1022 				# Average orbital speed in m/s
-rMoon = 384402 * 1000		# Average orbital distance in meters
-tMoon = 27					# Average orbital journey in days
+vMoon = 1022 				     # Average orbital speed in m/s
+dMoon = 384402 * 1000		     # Average orbital distance in metres
+tMoon = 27					     # Average orbital journey in days
+
+# Earth-Sun statistics
+vEarth = 29780                   # Average orbital speed in m/s
+dEarth = 149.60 * (10 ** 6)      # Average orbital distance in metres
+tEarth = 365.256                 # Average orbital journey in days
 
 """
 x = np.linspace(0, 7, 8)    # X range
@@ -45,9 +54,9 @@ x = np.zeros(steps + 4)
 y = np.zeros(steps + 4)
 
 x[0] = 1        	  	# Initial quantities
-y[0] = 3 + rMoon	    # Initial quantities
+y[0] = 3 + dEarth	    # Initial quantities
 
-vx = vMoon	  			# V = m / s
+vx = vEarth	  			# V = m / s
 vy = 0  	  			# V = m / s
 
 # New stuff --> increasing initial velocity
@@ -96,12 +105,21 @@ for i in np.linspace(0, steps, (steps + 1)):
 
     # The new calculation of 'g'
     # g is another name for 'a' and the 'F' - Force
-    g = G * M / rSq
+    g = G * MSun / rSq
     # g = k * M / R
     # if r == 0:
     #     g = 9.8
     # else:
     #     g = G * M / rSq
+
+    # Calculating the Mass of a spacial object
+    # only using the force of gravity etc.
+    myMass = g * rSq / G
+    print "myMass", myMass
+    print "real Mass of the Sun", MSun
+
+    print "myGravity", g
+    print "real Gravity of the Sun", gSun
 
     # Debugging --> Note: when the new g is used,
     # the program terminates after printing out
@@ -153,7 +171,7 @@ for i in np.linspace(0, steps, (steps + 1)):
     # Plotting the result
     ax.scatter(x[t], y[t])
 
-    ax2.bar(i, rSq)
+    ax2.bar(i, theDistance)
 
 # Showing the diagram
 plt.show()
