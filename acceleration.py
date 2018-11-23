@@ -17,7 +17,7 @@ ax2 = fig2.add_subplot(111)
 
 steps = 365                      # Number of steps per run
 
-dt = 86400                       # Delta of time in seconds
+dt = 86400		                 # Delta of time in seconds
 G = 6.674 * (10 ** -11)          # Gravitational constant
 
 gEarth = 9.81                    # Force of gravity
@@ -34,7 +34,7 @@ tMoon = 27					     # Average orbital journey in days
 
 # Earth-Sun statistics
 vEarth = 29780                   # Average orbital speed in m/s
-dEarth = 149.60 * (10 ** 6)      # Average orbital distance in metres
+dEarth = 1.496 * (10 ** 11)      # Average orbital distance in metres
 tEarth = 365.256                 # Average orbital journey in days
 
 """
@@ -252,7 +252,7 @@ f / m * (dt ** 2) = x(t + dt * 2) - 2 * x(t + dt) + x(t)
 f / m * (dt ** 2) + 2 * x(t + dt) - x(t) = x(t + dt * 2)
                            [s]      [r]         [t]
 
-* Why did we move these two? 
+* Why did we move these two?
     A. Because we want to know the position of THE NEXT POSITION
 
 y[t] = (2 * y[s] - y[r] - g * my_sin * ((dt) ** 2))  # Fy
@@ -271,4 +271,17 @@ y[t] = (2 * y[s] - y[r] - g * my_sin * ((dt) ** 2))  # Fy
 
 This was all the summary from the 21 of June 2018
 
+"""
+
+"""
+Power can be seperated into pieces:
+movement in 'x' and movement in 'y'
+
+Fx and Fy
+Using simple Pythagoras we can calculate the
+Force itself -->
+F = (Fx ** 2) + (Fy ** 2)
+
+We know that we are at x(t), and y(t); the origin
+This can be the Sun, the Earth or any object
 """
